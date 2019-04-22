@@ -238,7 +238,7 @@ class SlideToActView @JvmOverloads constructor (
             val defaultWhite = ContextCompat.getColor(this.context, R.color.white)
 
             actualOuterColor = layoutAttrs.getColor(R.styleable.SlideToActView_outer_color, defaultOuter)
-            actualIconColor = layoutAttrs.getColor(R.styleable.SlideToActView_icon_color, defaultOuter)
+            actualIconColor = layoutAttrs.getColor(R.styleable.SlideToActView_icon_color, defaultWhite)
             actualInnerColor = layoutAttrs.getColor(R.styleable.SlideToActView_inner_color, defaultWhite)
 
             // For text color, check if the `text_color` is set.
