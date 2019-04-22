@@ -95,6 +95,13 @@ class SlideToActView @JvmOverloads constructor (
         set(value) {
             field = value
             mOuterPaint.color = value
+            invalidate()
+        }
+        
+    /** Icon color */
+    var iconColor: Int = 0
+        set(value) {
+            field = value
             mDrawableArrow.setTint(value)
             invalidate()
         }
@@ -211,6 +218,7 @@ class SlideToActView @JvmOverloads constructor (
 
     init {
         val actualOuterColor : Int
+        val actualIconColor : Int
         val actualInnerColor : Int
         val actualTextColor : Int
 
@@ -230,6 +238,7 @@ class SlideToActView @JvmOverloads constructor (
             val defaultWhite = ContextCompat.getColor(this.context, R.color.white)
 
             actualOuterColor = layoutAttrs.getColor(R.styleable.SlideToActView_outer_color, defaultOuter)
+            actualIconColor = layoutAttrs.getColor(R.styleable.SlideToActView_icon_color, defaultOuter)
             actualInnerColor = layoutAttrs.getColor(R.styleable.SlideToActView_inner_color, defaultWhite)
 
             // For text color, check if the `text_color` is set.
@@ -280,6 +289,7 @@ class SlideToActView @JvmOverloads constructor (
         mTextPaint.textAlign = Paint.Align.CENTER
 
         outerColor = actualOuterColor
+        iconColor = actualIconColor
         innerColor = actualInnerColor
 
         mIconMargin = context.resources.getDimensionPixelSize(R.dimen.default_icon_margin)
