@@ -203,8 +203,6 @@ class SlideToActView @JvmOverloads constructor (
 
     /** Public flag to lock the slider */
     var isLocked = false
-        
-    var tickAnimation = false
 
     /** Public flag to lock the rotation icon */
     var isRotateIcon = true
@@ -260,8 +258,6 @@ class SlideToActView @JvmOverloads constructor (
 
             // TextAppearance is the last as will have precedence over everything text related.
             textAppearance = layoutAttrs.getResourceId(R.styleable.SlideToActView_text_appearance, 0)
-
-            tickAnimation = layoutAttrs.getBoolean(R.styleable.SlideToActView_tick_animation, false)
             isLocked = layoutAttrs.getBoolean(R.styleable.SlideToActView_slider_locked, false)
             isRotateIcon = layoutAttrs.getBoolean(R.styleable.SlideToActView_rotate_icon, true)
             isAnimateCompletion = layoutAttrs.getBoolean(R.styleable.SlideToActView_animate_completion, true)
@@ -524,7 +520,7 @@ class SlideToActView @JvmOverloads constructor (
             tickAnimator = ValueAnimator.ofInt(0, 255)
             tickAnimator.addUpdateListener {
                 mTickMargin = mIconMargin
-                mFlagDrawTick = tickAnimation
+                mFlagDrawTick = true
                 mDrawableTick.alpha = it.animatedValue as Int
                 invalidateArea()
             }
@@ -534,8 +530,8 @@ class SlideToActView @JvmOverloads constructor (
             tickAnimator.addUpdateListener {
                 if (!mFlagDrawTick) {
                     mTickMargin = mIconMargin
-                    mFlagDrawTick = tickAnimation
-                    //startTickAnimation()
+                    mFlagDrawTick = true
+                    startTickAnimation()
                     invalidateArea()
                 }
             }
@@ -547,9 +543,9 @@ class SlideToActView @JvmOverloads constructor (
         }
 
         if (isAnimateCompletion) {
-            //animators.add(marginAnimator)
-            //animators.add(areaAnimator)
-            //animators.add(tickAnimator)
+            animators.add(marginAnimator)
+            animators.add(areaAnimator)
+            animators.add(tickAnimator)
         }
 
         animSet.playSequentially(*animators.toTypedArray())
