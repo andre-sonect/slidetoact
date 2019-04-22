@@ -8,5 +8,6 @@
         <item name="outer_color">?colorAccent</item>
         <item name="icon_color">?colorAccent</item>
         <item name="slider_locked">false</item>
+        <item name="tick_animation">false</item>
     </style>
 </resources>
