@@ -13,7 +13,6 @@
         <attr name="outer_color" format="color" />
         <attr name="icon_color" format="color" />
         <attr name="text_color" format="color" />
-        <attr name="tick_animation" format="boolean" />
         <attr name="border_radius" format="dimension" />
         <attr name="slider_height" format="dimension" />
         <attr name="slider_locked" format="boolean" />
