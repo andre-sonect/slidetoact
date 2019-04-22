@@ -6,6 +6,7 @@
         <item name="area_margin">@dimen/default_area_margin</item>
         <item name="inner_color">?android:colorBackground</item>
         <item name="outer_color">?colorAccent</item>
+        <item name="icon_color">"#ffffff"</item>
         <item name="slider_locked">false</item>
     </style>
 </resources>
